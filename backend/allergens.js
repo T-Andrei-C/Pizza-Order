@@ -1,38 +1,38 @@
 const allergens = [
   {
     id: 1,
-    name: "gluten",
+    name: "gluten"
   },
   {
     id: 2,
-    name: "milk",
+    name: "milk"
   },
   {
     id: 3,
-    name: "eggs",
+    name: "eggs"
   },
   {
     id: 4,
-    name: "sesame",
+    name: "sesame"
   },
   {
     id: 5,
-    name: "tree nuts",
+    name: "tree nuts"
   },
   {
     id: 6,
-    name: "peanuts",
+    name: "peanuts"
   },
   {
     id: 7,
-    name: "soybeans",
+    name: "soybeans"
   },
   {
     id: 8,
-    name: "shellfish",
+    name: "shellfish"
   },
   {
     id: 9,
-    name: "fish",
+    name: "fish"
   }
 ];
