@@ -1,0 +1,154 @@
+{
+  "pizzas": [
+    {
+      "id": 1,
+      "name": "White Primavera",
+      "ingredients": [
+        "tomatoes",
+        "wheat flour",
+        "garlic",
+        "spinach",
+        "broccoli"
+      ],
+      "price": 8.95,
+      "allergens": [1]
+    },
+    {
+      "id": 2,
+      "name": "Quattro Formaggi",
+      "ingredients": [
+        "wheat flour",
+        "mozzarella",
+        "parmesan",
+        "provolone",
+        "gorgonzola"
+      ],
+      "price": 10.50,
+      "allergens": [1,2]
+    },
+    {
+      "id": 3,
+      "name": "Vegetable Special",
+      "ingredients": [
+        "tomatoes",
+        "wheat flour",
+        "mushrooms",
+        "onions",
+        "green peppers",
+        "olives",
+        "spinach",
+        "broccoli"
+      ],
+      "price": 8.50,
+      "allergens": [1]
+    },
+    {
+      "id": 4,
+      "name": "Hawaiian",
+      "ingredients": ["pineapple", "wheat flour", "ham", "bacon", "mozzarella"],
+      "price": 8.50,
+      "allergens": [1,2]
+    },
+    {
+      "id": 5,
+      "name": "Greek Style",
+      "ingredients": [
+        "pesto sauce",
+        "gyro meat",
+        "garlic",
+        "spinach",
+        "lemon juice",
+        "olives",
+        "tomatoes",
+        "feta cheese"
+      ],
+      "price": 9.95,
+      "allergens": [2,5]
+    },
+    {
+      "id": 6,
+      "name": "Meat Lover's Pizza",
+      "ingredients": ["pepperoni", "sausage", "bacon", "ham", "ground beef"],
+      "price": 8.95,
+      "allergens": []
+    },
+    {
+      "id": 7,
+      "name": "Margherita",
+      "ingredients": [
+        "rice flour",
+        "buffalo mozzarella",
+        "basil",
+        "olives",
+        "salt"
+      ],
+      "price": 7.95,
+      "allergens": [2]
+    },
+    {
+      "id": 8,
+      "name": "Shrimp Pizza",
+      "ingredients": [
+        "rice flour",
+        "sesame",
+        "shrimp",
+        "garlic",
+        "ricotta",
+        "mozzarella",
+        "parmesan",
+        "butter"
+      ],
+      "price": 7.95,
+      "allergens": [2,4,8]
+    },
+    {
+      "id": 9,
+      "name": "Cauliflower Special",
+      "ingredients": [
+        "cauliflower",
+        "sesame",
+        "soybeans",
+        "onions",
+        "tomatoes",
+        "basil",
+        "mozzarella",
+        "parmesan",
+        "eggs"
+      ],
+      "price": 7.95,
+      "allergens": [2,4,7]
+    },
+    {
+      "id": 10,
+      "name": "Smoked Salmon and Cheese",
+      "ingredients": [
+        "wheat flour",
+        "ricotta",
+        "cream cheese",
+        "chives",
+        "salmon",
+        "dill",
+        "lemon"
+      ],
+      "price": 11.50,
+      "allergens": [1,2,9]
+    },
+    {
+      "id": 11,
+      "name": "Taffy Apple Pizza",
+      "ingredients": [
+        "wheat flour",
+        "sugar",
+        "peanut butter",
+        "vanilla",
+        "apples",
+        "peanuts",
+        "cinnamon",
+        "caramel",
+        "cream cheese"
+      ],
+      "price": 8.75,
+      "allergens": [1,2,6]
+    }
+  ]
+}
