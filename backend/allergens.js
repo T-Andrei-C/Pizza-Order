@@ -36,3 +36,5 @@ const allergens = [
     name: "fish"
   }
 ];
+
+module.exports = { allergens }
