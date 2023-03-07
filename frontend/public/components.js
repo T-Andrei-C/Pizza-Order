@@ -9,11 +9,14 @@ const pizzaDisplay = (data, data2) => {
                 <p>${pizza.name}</p>
             </div>
             <div class="ingredients">
-                <p>${pizza.ingredients}</p>
-                <p>${data2}</p>
+                <p>Ingredients: ${pizza.ingredients}</p>
+                <p>Allergens: ${data2}</p>
+            </div>
+            <div class="quantity-options">
+                <input type="text" class="quantity">
             </div>
             <div class="add-and-remove-btn">
-                <img src="/public/img/white_plus.png">
+                <button><img src="/public/img/white_plus.png"></button>
             </div>
         </div>`);
     });
