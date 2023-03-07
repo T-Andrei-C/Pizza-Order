@@ -1,4 +1,4 @@
-// import { pizzaDisplay, pizzaPage } from "components.js";
+import { pizzaDisplay, pizzaPage } from "./components.js";
 if(typeof window !== 'undefined') {
 
 const loadEvent = () => {

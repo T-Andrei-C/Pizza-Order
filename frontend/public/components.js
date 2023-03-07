@@ -32,4 +32,4 @@ const pizzaPage = (data) => {
     </section>`
 };
 
-// export { pizzaDisplay, pizzaPage }
+export { pizzaDisplay, pizzaPage }
