@@ -2,6 +2,7 @@
   "pizzas": [
     {
       "id": 1,
+      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
       "name": "White Primavera",
       "ingredients": [
         "tomatoes",
@@ -15,6 +16,7 @@
     },
     {
       "id": 2,
+      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
       "name": "Quattro Formaggi",
       "ingredients": [
         "wheat flour",
@@ -28,6 +30,7 @@
     },
     {
       "id": 3,
+      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
       "name": "Vegetable Special",
       "ingredients": [
         "tomatoes",
@@ -44,6 +47,7 @@
     },
     {
       "id": 4,
+      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
       "name": "Hawaiian",
       "ingredients": ["pineapple", "wheat flour", "ham", "bacon", "mozzarella"],
       "price": 8.50,
@@ -51,6 +55,7 @@
     },
     {
       "id": 5,
+      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
       "name": "Greek Style",
       "ingredients": [
         "pesto sauce",
@@ -67,6 +72,7 @@
     },
     {
       "id": 6,
+      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
       "name": "Meat Lover's Pizza",
       "ingredients": ["pepperoni", "sausage", "bacon", "ham", "ground beef"],
       "price": 8.95,
@@ -74,6 +80,7 @@
     },
     {
       "id": 7,
+      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
       "name": "Margherita",
       "ingredients": [
         "rice flour",
@@ -87,6 +94,7 @@
     },
     {
       "id": 8,
+      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
       "name": "Shrimp Pizza",
       "ingredients": [
         "rice flour",
@@ -103,6 +111,7 @@
     },
     {
       "id": 9,
+      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
       "name": "Cauliflower Special",
       "ingredients": [
         "cauliflower",
@@ -120,6 +129,7 @@
     },
     {
       "id": 10,
+      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
       "name": "Smoked Salmon and Cheese",
       "ingredients": [
         "wheat flour",
@@ -135,6 +145,7 @@
     },
     {
       "id": 11,
+      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
       "name": "Taffy Apple Pizza",
       "ingredients": [
         "wheat flour",
