@@ -60,6 +60,7 @@
       "name": "Greek Style",
       "ingredients": [
         "pesto sauce",
+        "wheat flour",
         "gyro meat",
         "garlic",
         "spinach",
@@ -69,7 +70,7 @@
         "feta cheese"
       ],
       "price": 9.95,
-      "allergens": [2,5]
+      "allergens": [1,2,5]
     },
     {
       "id": 6,
