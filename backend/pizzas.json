@@ -36,6 +36,7 @@
         "tomatoes",
         "wheat flour",
         "mushrooms",
+        "mozzarella",
         "onions",
         "green peppers",
         "olives",
@@ -43,7 +44,7 @@
         "broccoli"
       ],
       "price": 8.50,
-      "allergens": [1]
+      "allergens": [1,2]
     },
     {
       "id": 4,
