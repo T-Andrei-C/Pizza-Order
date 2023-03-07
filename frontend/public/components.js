@@ -1,3 +1,10 @@
+const formatList = (data) => {
+    const newList = [];
+    data.forEach(el => 
+        newList.push(`${el.charAt(0).toUpperCase().concat(el.slice(1).toLowerCase())}`));
+    return newList.join(", ");
+};
+
 const pizzaDisplay = (data, data2) => {
     const pizzas = [];
     data.forEach((pizza, i) => {
@@ -8,14 +15,16 @@ const pizzaDisplay = (data, data2) => {
                     <img src="${pizza.url}" class="pizza-image" alt="Image of ${pizza.name}">
                 </div>
                 <div>
-                    <p>${pizza.price}</p>
-                    <p>${pizza.name}</p>
+                    <p>&euro;${pizza.price}</p>
+                    <p><b>${pizza.name}</b></p>
                 </div>
             </div>
             <div class="ingredients">
-                <p>Ingredients: ${pizza.ingredients}</p>
-                <p>Allergens: ${pizza.name === data2[i].name ? data2[i].allergens.join(",") : ""} </p>
-            </div>
+                    <div>
+                        <p>Ingredients: ${formatList(pizza.ingredients)}</p><br>
+                        <p>Allergens: ${pizza.name === data2[i].name ? data2[i].allergens.join(",") : ""} </p>
+                    </div>
+                </div>
             <div class="quantity-options">
                 <input type="text" class="quantity">
             </div>

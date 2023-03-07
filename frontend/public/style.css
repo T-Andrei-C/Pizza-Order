@@ -15,27 +15,68 @@ section {
 
 #pick-your-allergy {
     margin: 3em 3em 0 3em;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    background-color: rgb(19, 24, 27);
+    padding: 0.5em;
+    border-radius: 4px;
+}
+
+#pick-your-allergy::placeholder {
+    color: rgba(255, 255, 255,0.5);
+    font-size: 16px;
 }
 
 .pizzas {
+    padding: 0 2em;
+    background-color: rgb(19, 24, 27);
     margin: 3em;
-    width: 500px;
+    width: 700px;
+    border-radius: 10px;
 }
 
 .pizza {
     display: flex;
+    border-bottom: 2px solid rgba(255, 255, 255,0.2);
+    padding: 1em;
+}
 
+.pizzas div:last-child {
+    border-bottom: none;
+}
+
+.ingredients {
+    padding: 0.5em;
 }
 
 .pizza-image {
-    width: 200px;
+    width: 160px;
+}
+
+.add-and-remove-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .add-and-remove-btn img {
-    width: 30px;
-    
+    width: 25px; 
 }
 
-.main-details {
+.main-details, .ingredients {
     display: flex;
+    align-items: center;
+}
+
+.main-details div {
+    padding: 0.5em;
+}
+
+.main-details div:nth-child(2) {
+    min-width: 120px;
+}
+
+.quantity-options {
+    width: 30px;
 }
