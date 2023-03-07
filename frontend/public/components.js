@@ -1,12 +1,16 @@
-const pizzaDisplay = (data) => {
+const pizzaDisplay = (data, data2) => {
     const pizzas = [];
     data.forEach(pizza => {
         pizzas.push(`
         <div class ="pizza">
             <div class="main-details">
-                <img src="${pizza.url}" alt="Image of ${pizza.name}">
-                <p>${pizza.price}</p>
-                <p>${pizza.name}</p>
+                <div>
+                    <img src="${pizza.url}" class="pizza-image" alt="Image of ${pizza.name}">
+                </div>
+                <div>
+                    <p>${pizza.price}</p>
+                    <p>${pizza.name}</p>
+                </div>
             </div>
             <div class="ingredients">
                 <p>Ingredients: ${pizza.ingredients}</p>
@@ -23,11 +27,12 @@ const pizzaDisplay = (data) => {
     return pizzas.join("");
 };
 
-const pizzaPage = (data) => {
+const pizzaPage = (data, data2) => {
     return `
     <section>
+        <input type="text" id="pick-your-allergy" placeholder="Filter by Allergen">
         <div class="pizzas">
-            ${pizzaDisplay(data)}
+            ${pizzaDisplay(data, data2)}
         </div>
     </section>`
 };

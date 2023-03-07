@@ -9,10 +9,20 @@ if (typeof window !== "undefined") {
       return await response.json();
     };
 
-    const displayPizzaList = async () => {
-      const pizzas = await fetchPizzas();
-      rootElement.insertAdjacentHTML("beforeend", pizzaPage(pizzas));
+    const fetchAllergens = async () => {
+      const response = await fetch(`http://127.0.0.1:9001/api/allergen`);
+      return await response.json();
     };
+
+    // const displayPizzaList = async () => {
+    //   const pizzas = await fetchPizzas();
+    //   const allergens = await fetchAllergens();
+    //   const allergenList = allergens.map(allergen => allergen.name);
+    //   pizzas.map(pizza => {
+
+    //   })
+    //   rootElement.insertAdjacentHTML("beforeend", pizzaPage(pizzas, allergens));
+    // };
 
     const main = async () => {
       displayPizzaList();
