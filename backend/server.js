@@ -1,12 +1,10 @@
-const { allergens } = require('./allergens.js')
-console.log(allergens)
-
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
 const { reader } = require("./fileReader");
-const filePath = path.join(`${__dirname}/pizzas.json`);
+const filePathPizza = path.join(`${__dirname}/pizzas.json`);
+const filePathAllergens = path.join(`${__dirname}/allergens.json`);
 
 const port = 9001;
 
@@ -21,12 +19,13 @@ app.get("/", (req, res) => {
 app.use('/public', express.static(`${__dirname}/../frontend/public`));
 
 app.get("/api/pizza", async (req, res) => {
-    const pizzas = await reader(filePath);
+    const pizzas = await reader(filePathPizza);
     res.json(pizzas.pizzas);
 });
 
 app.get("/api/allergen", async (req, res) => {
-    res.json(allergens);
+  const allergens = await reader(filePathAllergens)
+    res.json(allergens.allergens);
 });
 
 app.listen(port, () => console.log(`http://127.0.0.1:${port}`));
