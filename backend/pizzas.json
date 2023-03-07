@@ -2,10 +2,10 @@
   "pizzas": [
     {
       "id": 1,
-      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
+      "url": "https://images2.imgbox.com/50/dc/5QgfJxbu_o.png",
       "name": "White Primavera",
       "ingredients": [
-        "tomatoes",
+        "tomato sauce",
         "wheat flour",
         "garlic",
         "spinach",
@@ -16,7 +16,7 @@
     },
     {
       "id": 2,
-      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
+      "url": "https://images2.imgbox.com/9d/96/Rjy4ZjCX_o.png",
       "name": "Quattro Formaggi",
       "ingredients": [
         "wheat flour",
@@ -30,7 +30,7 @@
     },
     {
       "id": 3,
-      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
+      "url": "https://images2.imgbox.com/d5/89/dXoIJitZ_o.png",
       "name": "Vegetable Special",
       "ingredients": [
         "tomatoes",
@@ -47,15 +47,15 @@
     },
     {
       "id": 4,
-      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
+      "url": "https://images2.imgbox.com/33/f1/HBBvNiLl_o.png",
       "name": "Hawaiian",
-      "ingredients": ["pineapple", "wheat flour", "ham", "bacon", "mozzarella"],
+      "ingredients": ["pineapple", "wheat flour", "red peppers", "ham", "bacon", "mozzarella"],
       "price": 8.50,
       "allergens": [1,2]
     },
     {
       "id": 5,
-      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
+      "url": "https://images2.imgbox.com/80/33/izR0Dk42_o.png",
       "name": "Greek Style",
       "ingredients": [
         "pesto sauce",
@@ -72,7 +72,7 @@
     },
     {
       "id": 6,
-      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
+      "url": "https://images2.imgbox.com/c1/06/G6mK7ksr_o.png",
       "name": "Meat Lover's Pizza",
       "ingredients": ["pepperoni", "sausage", "bacon", "ham", "ground beef"],
       "price": 8.95,
@@ -80,11 +80,12 @@
     },
     {
       "id": 7,
-      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
+      "url": "https://images2.imgbox.com/93/28/dPkZs08T_o.png",
       "name": "Margherita",
       "ingredients": [
         "rice flour",
         "buffalo mozzarella",
+        "tomato sauce",
         "basil",
         "olives",
         "salt"
@@ -94,7 +95,7 @@
     },
     {
       "id": 8,
-      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
+      "url": "https://images2.imgbox.com/fe/46/R4NoIoIy_o.png",
       "name": "Shrimp Pizza",
       "ingredients": [
         "rice flour",
@@ -111,14 +112,14 @@
     },
     {
       "id": 9,
-      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
+      "url": "https://images2.imgbox.com/4a/2c/vv445LRo_o.png",
       "name": "Cauliflower Special",
       "ingredients": [
         "cauliflower",
         "sesame",
         "soybeans",
         "onions",
-        "tomatoes",
+        "corn",
         "basil",
         "mozzarella",
         "parmesan",
@@ -129,7 +130,7 @@
     },
     {
       "id": 10,
-      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
+      "url": "https://images2.imgbox.com/7f/9a/suM4uUsc_o.png",
       "name": "Smoked Salmon and Cheese",
       "ingredients": [
         "wheat flour",
@@ -145,7 +146,7 @@
     },
     {
       "id": 11,
-      "url": "https://images2.imgbox.com/02/4d/Rz96iDzc_o.png",
+      "url": "https://images2.imgbox.com/0a/b4/8qz1reqX_o.png",
       "name": "Taffy Apple Pizza",
       "ingredients": [
         "wheat flour",
