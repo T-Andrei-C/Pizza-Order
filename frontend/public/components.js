@@ -1,4 +1,4 @@
-const pizzaDisplay = (data, data2) => {
+const pizzaDisplay = (data) => {
     const pizzas = [];
     data.forEach(pizza => {
         pizzas.push(`
@@ -10,7 +10,7 @@ const pizzaDisplay = (data, data2) => {
             </div>
             <div class="ingredients">
                 <p>Ingredients: ${pizza.ingredients}</p>
-                <p>Allergens: ${data2}</p>
+                <p>Allergens: </p>
             </div>
             <div class="quantity-options">
                 <input type="text" class="quantity">
