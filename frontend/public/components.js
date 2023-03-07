@@ -22,7 +22,7 @@ const pizzaDisplay = (data, data2) => {
             <div class="ingredients">
                     <div>
                         <p>Ingredients: ${formatList(pizza.ingredients)}</p><br>
-                        <p>Allergens: ${pizza.name === data2[i].name ? data2[i].allergens.join(",") : ""} </p>
+                        <p>Allergens: ${formatList([pizza.name === data2[i].name ? data2[i].allergens.join(", ") : ""])} </p>
                     </div>
                 </div>
             <div class="quantity-options">
