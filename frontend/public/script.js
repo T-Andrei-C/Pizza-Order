@@ -14,15 +14,23 @@ if (typeof window !== "undefined") {
       return await response.json();
     };
 
-    // const displayPizzaList = async () => {
-    //   const pizzas = await fetchPizzas();
-    //   const allergens = await fetchAllergens();
-    //   const allergenList = allergens.map(allergen => allergen.name);
-    //   pizzas.map(pizza => {
-
-    //   })
-    //   rootElement.insertAdjacentHTML("beforeend", pizzaPage(pizzas, allergens));
-    // };
+    const displayPizzaList = async () => {
+      const pizzas = await fetchPizzas();
+      const allergens = await fetchAllergens();
+      const allergenList = [];
+      pizzas.map((pizza, i) => {
+        allergenList.push({
+          name: pizza.name,
+          allergens: []
+        })
+        pizza.allergens.map(allergen => {
+          if (allergen === allergens[allergen - 1].id) {
+            allergenList[i].allergens.push(allergens[allergen - 1].name);
+          }
+        })
+      })
+      rootElement.insertAdjacentHTML("beforeend", pizzaPage(pizzas, allergenList));
+    };
 
     const main = async () => {
       displayPizzaList();
