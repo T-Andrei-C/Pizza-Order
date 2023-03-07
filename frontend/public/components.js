@@ -1,6 +1,6 @@
 const pizzaDisplay = (data, data2) => {
     const pizzas = [];
-    data.forEach(pizza => {
+    data.forEach((pizza, i) => {
         pizzas.push(`
         <div class ="pizza">
             <div class="main-details">
@@ -14,7 +14,7 @@ const pizzaDisplay = (data, data2) => {
             </div>
             <div class="ingredients">
                 <p>Ingredients: ${pizza.ingredients}</p>
-                <p>Allergens: </p>
+                <p>Allergens: ${pizza.name === data2[i].name ? data2[i].allergens.join(",") : ""} </p>
             </div>
             <div class="quantity-options">
                 <input type="text" class="quantity">
