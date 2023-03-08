@@ -1,8 +1,14 @@
-const formatList = (data) => {
+const capitalizeAllInArray = (data) => {
     const newList = [];
     data.forEach(el => 
-        newList.push(`${el.charAt(0).toUpperCase().concat(el.slice(1).toLowerCase())}`));
+        newList.push(`${el.trim().charAt(0).toUpperCase().concat(el.trim().slice(1).toLowerCase())}`));
     return newList.join(", ");
+};
+
+const capitalizeString = (str) => {
+    const arr = str.split(",");
+    let newList = capitalizeAllInArray(arr);
+    return newList;
 };
 
 const pizzaDisplay = (data, data2) => {
@@ -21,8 +27,8 @@ const pizzaDisplay = (data, data2) => {
             </div>
             <div class="ingredients">
                     <div>
-                        <p>Ingredients: ${formatList(pizza.ingredients)}</p><br>
-                        <p>Allergens: ${formatList([pizza.name === data2[i].name ? data2[i].allergens.join(", ") : ""])} </p>
+                        <p>Ingredients: ${capitalizeAllInArray(pizza.ingredients)}</p><br>
+                        <p>Allergens: ${capitalizeString(pizza.name === data2[i].name ? data2[i].allergens.join(", ") : "")} </p>
                     </div>
                 </div>
             <div class="quantity-options">
