@@ -84,3 +84,17 @@ section {
 .quantity-options {
     width: 30px;
 }
+
+.quantity {
+    color: white;
+    font-size: 20px;
+    background-color: rgb(32,42,43);
+    padding: 0.2em 0.5em;
+}
+
+#order {
+    background-color: rgb(19, 24, 27);
+    font-size: 18px;
+    margin-bottom: 3em;
+    padding: 0.5em;
+}

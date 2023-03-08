@@ -1,3 +1,13 @@
+const orderForm = () => {
+    return `
+    <form autocomplete="off">
+        <input type="text" id="name" name="name" placeholder="name"><br>
+        <input type="email" id="email" name="email" placeholder="yourname@gmail.com"><br>
+        <input type="text" id="city" name="city" placeholder="your city"><br>
+        <input type="text" id="street" name="street" placeholder="your street"><br>
+    </form>`
+}
+
 const capitalizeAllInArray = (data) => {
     const newList = [];
     data.forEach(el => 
@@ -22,7 +32,7 @@ const pizzaDisplay = (data, data2) => {
                 </div>
                 <div>
                     <p>&euro;${pizza.price}</p>
-                    <p><b>${pizza.name}</b></p>
+                    <p id="${pizza.id}"><b>${pizza.name}</b></p>
                 </div>
             </div>
             <div class="ingredients">
@@ -44,7 +54,7 @@ const pizzaDisplay = (data, data2) => {
                 </select>
             </div>
             <div class="add-and-remove-btn">
-                <button><img src="/public/img/white_plus.png"></button>
+                <button class="add-pizza"><img src="/public/img/white_plus.png"></button>
             </div>
         </div>`);
     });
@@ -60,7 +70,8 @@ const pizzaPage = (data, data2) => {
         <div class="pizzas">
             ${pizzaDisplay(data, data2)}
         </div>
+        <button id="order">Order Now</button>
     </section>`
 };
 
-export { pizzaDisplay, pizzaPage }
+export { pizzaDisplay, pizzaPage, orderForm }

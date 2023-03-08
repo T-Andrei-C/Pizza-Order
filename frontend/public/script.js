@@ -1,4 +1,4 @@
-import { pizzaDisplay, pizzaPage } from "./components.js";
+import { pizzaDisplay, pizzaPage, orderForm } from "./components.js";
 
 if (typeof window !== "undefined") {
   const loadEvent = () => {
@@ -102,9 +102,40 @@ if (typeof window !== "undefined") {
       });
     };
 
+    const orderedPizzas = [];
+    const addPizzas = () => {
+        const addButtons = Array.from(document.querySelectorAll('.add-pizza'));
+        addButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                let pizzaId = btn.parentElement.parentElement.children[0].children[1].children[1].id
+                let pizzaAmount = btn.parentElement.parentElement.children[2].children[0].value
+                orderedPizzas.push({
+                    id: parseInt(pizzaId, 10),
+                    amount: parseInt(pizzaAmount, 10)
+                })
+            })
+            if (orderedPizzas.length > 0) {
+                rootElement.insertAdjacentHTML('beforeend', orderForm());
+            }
+        })
+        // console.log(orderedPizzas.length);
+    }
+
+    console.log(orderedPizzas)
+
+    // rootElement.insertAdjacentHTML('beforeend', orderForm());
+
+    // const displayForm = () => {
+    //     if (orderedPizzas[1]) {
+    //         rootElement.insertAdjacentHTML('beforeend', orderForm());
+    //     }
+    // }
+
     const main = async () => {
       await displayPizzaList();
       filterByAllergens();
+      addPizzas()
+    //   displayForm()
       reset();
     };
     main();
