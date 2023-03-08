@@ -30,54 +30,62 @@ if (typeof window !== "undefined") {
       pizzas.map((pizza, i) => {
         allergenList.push({
           name: pizza.name,
-          allergens: []
-        })
-        pizza.allergens.map(allergen => {
+          allergens: [],
+        });
+        pizza.allergens.map((allergen) => {
           if (allergen === allergens[allergen - 1].id) {
             allergenList[i].allergens.push(allergens[allergen - 1].name);
           }
-        })
-      })
+        });
+      });
 
-      rootElement.insertAdjacentHTML("beforeend", pizzaPage(pizzas, allergenList));
+      rootElement.insertAdjacentHTML(
+        "beforeend",
+        pizzaPage(pizzas, allergenList)
+      );
     };
 
     const removeListElements = () => {
       let listedItems = document.querySelectorAll(".list-item");
-      if (listedItems) listedItems.forEach(item => item.remove());
-    }
+      if (listedItems) listedItems.forEach((item) => item.remove());
+    };
     const showByAllergens = (data) => {
       const allergensList = document.querySelector("#allergens-list");
       const allergenSearch = document.querySelector("#pick-your-allergy");
-      const spanSelector = document.querySelectorAll(".allergens")
-      data.map(allergen => {
+      const spanSelector = document.querySelectorAll(".allergens");
+      data.map((allergen) => {
         let listItem = document.createElement("li");
         listItem.classList.add("list-item");
-        listItem.innerHTML = `${allergen.name.charAt(0).toUpperCase().concat(allergen.name.slice(1).toLowerCase())}`;
+        listItem.innerHTML = `${allergen.name
+          .charAt(0)
+          .toUpperCase()
+          .concat(allergen.name.slice(1).toLowerCase())}`;
 
         listItem.addEventListener("click", () => {
           allergenSearch.value = listItem.innerHTML;
 
-          spanSelector.forEach(allergen => {
-            const list = allergen.innerHTML.split(',')
-            list.map(allergy => {
-              allergy = allergy.trim()
-              if(allergy === allergenSearch.value) {
-                allergen.parentElement.parentElement.parentElement.parentElement.remove()
+          spanSelector.forEach((allergen) => {
+            const list = allergen.innerHTML.split(",");
+            list.map((allergy) => {
+              allergy = allergy.trim();
+              if (allergy === allergenSearch.value) {
+                allergen.parentElement.parentElement.parentElement.parentElement.remove();
               }
-            })
-          })
+            });
+          });
           removeListElements();
-        })
+        });
         allergensList.appendChild(listItem);
-      })
-    }
+      });
+    };
 
     const filterByAllergens = async () => {
       const allergens = await fetchAllergens();
       const allergenSearch = document.querySelector("#pick-your-allergy");
       allergenSearch.addEventListener("input", () => {
-        const filterPizzas = allergens.filter(allergen => allergen.name.includes(allergenSearch.value));
+        const filterPizzas = allergens.filter((allergen) =>
+          allergen.name.includes(allergenSearch.value)
+        );
         removeListElements();
         if (allergenSearch.value === "") {
           showByAllergens(allergens);
@@ -85,12 +93,19 @@ if (typeof window !== "undefined") {
         if (allergenSearch.value.length > 0) {
           showByAllergens(filterPizzas);
         }
-      })
-    }
+      });
+    };
+
+    const reset = () => {
+      document.querySelector("#reset").addEventListener("click", () => {
+        location.reload();
+      });
+    };
 
     const main = async () => {
       await displayPizzaList();
       filterByAllergens();
+      reset();
     };
     main();
   };

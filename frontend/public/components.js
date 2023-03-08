@@ -29,12 +29,19 @@ const pizzaDisplay = (data, data2) => {
                     <div>
                         <p>Ingredients: ${capitalizeAllInArray(pizza.ingredients)}</p><br>
                         <p>Allergens: 
-                            <span id="allergens">${capitalizeString(pizza.name === data2[i].name ? data2[i].allergens.join(", ") : "")} </span>
+                            <span class="allergens">${capitalizeString(pizza.name === data2[i].name ? data2[i].allergens.join(", ") : "")} </span>
                         </p>
                     </div>
                 </div>
             <div class="quantity-options">
-                <input type="text" class="quantity">
+                <select class="quantity">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
             </div>
             <div class="add-and-remove-btn">
                 <button><img src="/public/img/white_plus.png"></button>
@@ -49,6 +56,7 @@ const pizzaPage = (data, data2) => {
     <section>
         <input type="text" id="pick-your-allergy" placeholder="Filter by Allergen">
         <ul id="allergens-list"></ul>
+        <button id="reset">Show All Pizzas</button>
         <div class="pizzas">
             ${pizzaDisplay(data, data2)}
         </div>
