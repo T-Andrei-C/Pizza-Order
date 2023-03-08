@@ -28,7 +28,9 @@ const pizzaDisplay = (data, data2) => {
             <div class="ingredients">
                     <div>
                         <p>Ingredients: ${capitalizeAllInArray(pizza.ingredients)}</p><br>
-                        <p id="allergens">Allergens: ${capitalizeString(pizza.name === data2[i].name ? data2[i].allergens.join(", ") : "")} </p>
+                        <p>Allergens: 
+                            <span id="allergens">${capitalizeString(pizza.name === data2[i].name ? data2[i].allergens.join(", ") : "")} </span>
+                        </p>
                     </div>
                 </div>
             <div class="quantity-options">
