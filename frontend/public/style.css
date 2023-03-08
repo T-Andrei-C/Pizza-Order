@@ -77,6 +77,10 @@ section {
     min-width: 120px;
 }
 
+.main-details div:nth-child(2) p:first-of-type {
+    font-size: 18px;
+}
+
 .quantity-options {
     width: 30px;
 }
