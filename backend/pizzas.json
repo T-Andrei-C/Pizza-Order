@@ -128,7 +128,7 @@
         "eggs"
       ],
       "price": 7.95,
-      "allergens": [2,4,7]
+      "allergens": [2,3,4,7]
     },
     {
       "id": 10,
