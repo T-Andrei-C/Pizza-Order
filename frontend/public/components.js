@@ -28,7 +28,7 @@ const pizzaDisplay = (data, data2) => {
             <div class="ingredients">
                     <div>
                         <p>Ingredients: ${capitalizeAllInArray(pizza.ingredients)}</p><br>
-                        <p>Allergens: ${capitalizeString(pizza.name === data2[i].name ? data2[i].allergens.join(", ") : "")} </p>
+                        <p id="allergens">Allergens: ${capitalizeString(pizza.name === data2[i].name ? data2[i].allergens.join(", ") : "")} </p>
                     </div>
                 </div>
             <div class="quantity-options">
@@ -46,6 +46,7 @@ const pizzaPage = (data, data2) => {
     return `
     <section>
         <input type="text" id="pick-your-allergy" placeholder="Filter by Allergen">
+        <ul id="allergens-list"></ul>
         <div class="pizzas">
             ${pizzaDisplay(data, data2)}
         </div>
