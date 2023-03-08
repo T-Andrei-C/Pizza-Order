@@ -49,13 +49,24 @@ if (typeof window !== "undefined") {
     const showByAllergens = (data) => {
       const allergensList = document.querySelector("#allergens-list");
       const allergenSearch = document.querySelector("#pick-your-allergy");
+      const spanSelector = document.querySelectorAll(".allergens")
       data.map(allergen => {
         let listItem = document.createElement("li");
         listItem.classList.add("list-item");
-        listItem.innerHTML = `${allergen.name}`;
+        listItem.innerHTML = `${allergen.name.charAt(0).toUpperCase().concat(allergen.name.slice(1).toLowerCase())}`;
 
         listItem.addEventListener("click", () => {
           allergenSearch.value = listItem.innerHTML;
+
+          spanSelector.forEach(allergen => {
+            const list = allergen.innerHTML.split(',')
+            list.map(allergy => {
+              allergy = allergy.trim()
+              if(allergy === allergenSearch.value) {
+                allergen.parentElement.parentElement.parentElement.parentElement.remove()
+              }
+            })
+          })
           removeListElements();
         })
         allergensList.appendChild(listItem);
