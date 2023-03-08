@@ -14,6 +14,15 @@ if (typeof window !== "undefined") {
       return await response.json();
     };
 
+    // let a = [];
+    // const filter = ["gluten", "milk"];
+    // allergenList.map(pizza => {
+    //   if(!filter.some(alergy => pizza.allergens.includes(alergy))){
+    //     a.push(pizza);
+    //   }
+    // })
+    // console.log(a)
+
     const displayPizzaList = async () => {
       const pizzas = await fetchPizzas();
       const allergens = await fetchAllergens();
@@ -29,11 +38,48 @@ if (typeof window !== "undefined") {
           }
         })
       })
+
       rootElement.insertAdjacentHTML("beforeend", pizzaPage(pizzas, allergenList));
     };
 
+    const removeListElements = () => {
+      let listedItems = document.querySelectorAll(".list-item");
+      if (listedItems) listedItems.forEach(item => item.remove());
+    }
+    const showByAllergens = (data) => {
+      const allergensList = document.querySelector("#allergens-list");
+      const allergenSearch = document.querySelector("#pick-your-allergy");
+      data.map(allergen => {
+        let listItem = document.createElement("li");
+        listItem.classList.add("list-item");
+        listItem.innerHTML = `${allergen.name}`;
+
+        listItem.addEventListener("click", () => {
+          allergenSearch.value = listItem.innerHTML;
+          removeListElements();
+        })
+        allergensList.appendChild(listItem);
+      })
+    }
+
+    const filterByAllergens = async () => {
+      const allergens = await fetchAllergens();
+      const allergenSearch = document.querySelector("#pick-your-allergy");
+      allergenSearch.addEventListener("input", () => {
+        const filterPizzas = allergens.filter(allergen => allergen.name.includes(allergenSearch.value));
+        removeListElements();
+        if (allergenSearch.value === "") {
+          showByAllergens(allergens);
+        }
+        if (allergenSearch.value.length > 0) {
+          showByAllergens(filterPizzas);
+        }
+      })
+    }
+
     const main = async () => {
-      displayPizzaList();
+      await displayPizzaList();
+      filterByAllergens();
     };
     main();
   };
