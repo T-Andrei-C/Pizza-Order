@@ -48,7 +48,6 @@ if (typeof window !== "undefined") {
     const showByAllergens = (data) => {
       const allergensList = document.querySelector("#allergens-list");
       const allergenSearch = document.querySelector("#pick-your-allergy");
-      const spanSelector = document.querySelectorAll(".allergens");
       data.map((allergen) => {
         let listItem = document.createElement("li");
         listItem.classList.add("list-item");
@@ -84,51 +83,54 @@ if (typeof window !== "undefined") {
 
     const orderedPizzas = [];
     const addPizzas = () => {
-      const addButtons = Array.from(document.querySelectorAll('.add-pizza'));
+      const addButtons = Array.from(document.querySelectorAll(".add-pizza"));
       const selectorElement = document.querySelectorAll(".quantity");
       addButtons.forEach((btn, i) => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener("click", () => {
           if (btn.innerHTML === `<img src="/public/img/white_plus.png">`) {
-            let pizzaId = btn.parentElement.parentElement.children[0].children[1].children[1].id
-            let pizzaAmount = btn.parentElement.parentElement.children[2].children[0].value
+            let pizzaId =
+              btn.parentElement.parentElement.children[0].children[1]
+                .children[1].id;
+            let pizzaAmount =
+              btn.parentElement.parentElement.children[2].children[0].value;
             if (pizzaAmount > 0) {
               orderedPizzas.push({
                 id: parseInt(pizzaId, 10),
-                amount: parseInt(pizzaAmount, 10)
-              })
+                amount: parseInt(pizzaAmount, 10),
+              });
               btn.innerHTML = `<img src="/public/img/white_x.png">`;
-              selectorElement[i].children[0].style.display = "none";
+              // selectorElement[i].children[0].style.display = "none";
               selectorElement[i].disabled = true;
             }
             if (orderedPizzas.length === 1) {
-              document.querySelector('#checkout').disabled = false;
+              document.querySelector("#checkout").disabled = false;
             }
           } else {
             orderedPizzas.map((pizza, j) => {
-              if (pizza.id === i + 1){
+              if (pizza.id === i + 1) {
                 orderedPizzas.splice(j, 1);
-                selectorElement[i].children[0].style.display = "";
+                // selectorElement[i].children[0].style.display = "";
                 selectorElement[i].disabled = false;
                 selectorElement[i].value = "0";
-              } 
-            })
+              }
+            });
             if (orderedPizzas.length === 0) {
-              document.querySelector('#checkout').disabled = true;
-              document.querySelector('form').style.display = "none";
+              document.querySelector("#checkout").disabled = true;
+              document.querySelector("form").style.display = "none";
             }
             btn.innerHTML = `<img src="/public/img/white_plus.png">`;
           }
-        })
-      })
-    }
+        });
+      });
+    };
 
     const displayForm = () => {
-      rootElement.insertAdjacentHTML('beforeend', orderForm());
+      rootElement.insertAdjacentHTML("beforeend", orderForm());
     };
 
     const checkoutOrder = () => {
-      document.querySelector('#checkout').addEventListener('click', () => {
-        const formElement = document.querySelector('form');
+      document.querySelector("#checkout").addEventListener("click", () => {
+        const formElement = document.querySelector("form");
         formElement.style.display = "flex";
       });
     };
@@ -142,7 +144,9 @@ if (typeof window !== "undefined") {
 
       const filterPizzasByAlergies = () => {
         detailsOfPizzas.map((pizza, i) => {
-          if (!allergyList.some(allergy => pizza.allergens.includes(allergy))) {
+          if (
+            !allergyList.some((allergy) => pizza.allergens.includes(allergy))
+          ) {
             allPizzas[i].style.display = "flex";
           } else {
             allPizzas[i].style.display = "none";
@@ -159,17 +163,18 @@ if (typeof window !== "undefined") {
           if (!filterPizzas.textContent.includes(allergy)) {
             filterPizzas.insertAdjacentHTML(
               "beforeend",
-              `
-              <li>${allergy.charAt(0).toUpperCase().concat(allergy.slice(1).toLowerCase())}
+              `<li>${allergy
+                .charAt(0)
+                .toUpperCase()
+                .concat(allergy.slice(1).toLowerCase())}
                 <button id="${i}" class="removeAlergy">X</button>
-              </li>
-            `
+              </li>`
             );
           }
         });
 
-        document.querySelectorAll(".removeAlergy").forEach(btn => {
-          btn.addEventListener("click", e => {
+        document.querySelectorAll(".removeAlergy").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
             allergyList[e.target.id] = "";
             btn.parentElement.remove();
             filterPizzasByAlergies();
@@ -179,7 +184,7 @@ if (typeof window !== "undefined") {
     };
 
     const getFormInfo = () => {
-      const formElement = document.querySelector('form');
+      const formElement = document.querySelector("form");
       formElement.addEventListener("submit", async (e) => {
         e.preventDefault();
 
@@ -201,34 +206,35 @@ if (typeof window !== "undefined") {
             email: [...payload][1][1],
             address: {
               city: [...payload][2][1],
-              street: [...payload][3][1]
-            }
-          }
-        }
+              street: [...payload][3][1],
+            },
+          },
+        };
 
-        location.href = "http://127.0.0.1:9001/api/order"
+        location.reload()
         const reponse = await fetch("http://127.0.0.1:9001/api/order", {
           method: "POST",
           headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
           },
-          body: JSON.stringify(order)
-        })
+          body: JSON.stringify(order),
+        });
+
       });
     };
 
     window.addEventListener("click", () => {
       removeListElements();
-    })
+    });
 
     const main = async () => {
       await displayPizzaList();
       await filterByAllergens();
-      addPizzas()
-      addAllergiesToList()
-      displayForm()
-      checkoutOrder()
-      getFormInfo()
+      addPizzas();
+      addAllergiesToList();
+      displayForm();
+      checkoutOrder();
+      getFormInfo();
     };
     main();
   };
