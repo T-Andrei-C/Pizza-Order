@@ -187,7 +187,8 @@ if (typeof window !== "undefined") {
             }
           }
         }
-        location.reload();
+        // location.reload();
+        location.href = "http://127.0.0.1:9001/api/order"
         const reponse = await fetch("http://127.0.0.1:9001/api/order", {
           method: "POST",
           headers: {

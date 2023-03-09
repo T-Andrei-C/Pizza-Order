@@ -39,9 +39,6 @@ app.route("/api/order")
     req.body.id = orders.length + 1;
     orders.push(req.body);
     writer(filePathOrders, orders);
-    console.log(req.body)
 })
-
-
 
 app.listen(port, () => console.log(`http://127.0.0.1:${port}`));

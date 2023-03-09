@@ -1,3 +1,1 @@
-[
-
-]
+[{"id":1,"pizzas":[{"id":1,"amount":1}],"date":{"year":2023,"month":3,"day":9,"hour":16,"minute":56},"customer":{"name":"Lidya","email":"dids@gmail.com","address":{"city":"Georgia","street":"Bl bla"}}},{"id":2,"pizzas":[{"id":4,"amount":2}],"date":{"year":2023,"month":3,"day":9,"hour":16,"minute":57},"customer":{"name":"Hunter","email":"hunter@gmail.com","address":{"city":"London","street":"Huntington"}}}]
