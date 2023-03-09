@@ -2,6 +2,8 @@ const orderForm = () => {
     return `
     <section>
         <form autocomplete="off">
+            <img src="/public/img/pizza_icon.png">
+            <div id="pizzasNumber">0</div>
             <h3>Place Your Order</h3>
             <div id="form-inputs">
                 <label>Name:
