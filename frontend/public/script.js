@@ -1,7 +1,7 @@
 import { pizzaPage, orderForm } from "./components.js";
 
 if (typeof window !== "undefined") {
-  const detailsOfPizzas = [];
+  let detailsOfPizzas = [];
 
   const loadEvent = () => {
     const rootElement = document.querySelector("#root");
@@ -105,17 +105,17 @@ if (typeof window !== "undefined") {
     }
 
     const displayForm = () => {
-        rootElement.insertAdjacentHTML('beforeend', orderForm());
+      rootElement.insertAdjacentHTML('beforeend', orderForm());
     };
 
     const checkoutOrder = () => {
-        document.querySelector('#checkout').addEventListener('click', () => {
-            const formElement = document.querySelector('form');
-            formElement.style.display = "flex";
-        });
+      document.querySelector('#checkout').addEventListener('click', () => {
+        const formElement = document.querySelector('form');
+        formElement.style.display = "flex";
+      });
     };
 
-    const chooseOption = () => {
+    const addAllergiesToList = () => {
       let allergyList = [];
       const allergenSearch = document.querySelector("#pick-your-allergy");
       const getOptions = document.querySelector("#allergens-list");
@@ -125,7 +125,7 @@ if (typeof window !== "undefined") {
       const filterPizzasByAlergies = () => {
         detailsOfPizzas.map((pizza, i) => {
           if (!allergyList.some(allergy => pizza.allergens.includes(allergy))) {
-            allPizzas[i].style.display = "";
+            allPizzas[i].style.display = "flex";
           } else {
             allPizzas[i].style.display = "none";
           }
@@ -152,7 +152,7 @@ if (typeof window !== "undefined") {
 
         document.querySelectorAll(".removeAlergy").forEach(btn => {
           btn.addEventListener("click", e => {
-            allergyList.splice(e.target.id, 1);
+            allergyList[e.target.id] = "";
             btn.parentElement.remove();
             filterPizzasByAlergies();
           });
@@ -161,43 +161,41 @@ if (typeof window !== "undefined") {
     };
 
     const getFormInfo = () => {
-        const formElement = document.querySelector('form');
-        formElement.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            
-            const prePayload = new FormData(formElement);
-            const payload = new URLSearchParams(prePayload);
+      const formElement = document.querySelector('form');
+      formElement.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-            let order = {
-                id: 0,
-                pizzas: orderedPizzas,
-                date: {
-                    year: new Date().getFullYear(),
-                    month: new Date().getMonth() +1,
-                    day: new Date().getDate(),
-                    hour: new Date().getHours(),
-                    minute: new Date().getMinutes(),
-                },
-                customer: {
-                  name: [...payload][0][1],
-                  email: [...payload][1][1],
-                  address: {
-                    city: [...payload][2][1],
-                    street: [...payload][3][1]
-                  }
-                }
+        const prePayload = new FormData(formElement);
+        const payload = new URLSearchParams(prePayload);
+
+        let order = {
+          id: 0,
+          pizzas: orderedPizzas,
+          date: {
+            year: new Date().getFullYear(),
+            month: new Date().getMonth() + 1,
+            day: new Date().getDate(),
+            hour: new Date().getHours(),
+            minute: new Date().getMinutes(),
+          },
+          customer: {
+            name: [...payload][0][1],
+            email: [...payload][1][1],
+            address: {
+              city: [...payload][2][1],
+              street: [...payload][3][1]
             }
-            location.reload();
-            const reponse = await fetch("http://127.0.0.1:9001/api/order", {
-              method: "POST",
-              headers: {
-                "Content-type": "application/json"
-              },
-              body: JSON.stringify(order)
-            })
-
-           
-        });
+          }
+        }
+        location.reload();
+        const reponse = await fetch("http://127.0.0.1:9001/api/order", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json"
+          },
+          body: JSON.stringify(order)
+        })
+      });
     };
 
     window.addEventListener("click", () => {
@@ -208,7 +206,7 @@ if (typeof window !== "undefined") {
       await displayPizzaList();
       await filterByAllergens();
       addPizzas()
-      chooseOption()
+      addAllergiesToList()
       displayForm()
       checkoutOrder()
       getFormInfo()
