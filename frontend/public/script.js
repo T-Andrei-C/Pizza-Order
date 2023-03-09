@@ -83,46 +83,47 @@ if (typeof window !== "undefined") {
 
     const orderedPizzas = [];
     const addPizzas = () => {
-      const addButtons = Array.from(document.querySelectorAll(".add-pizza"));
+      let amount = 0;
+      const addButtons = Array.from(document.querySelectorAll('.add-pizza'));
       const selectorElement = document.querySelectorAll(".quantity");
       addButtons.forEach((btn, i) => {
-        btn.addEventListener("click", () => {
+        btn.addEventListener('click', () => {
           if (btn.innerHTML === `<img src="/public/img/white_plus.png">`) {
-            let pizzaId =
-              btn.parentElement.parentElement.children[0].children[1]
-                .children[1].id;
-            let pizzaAmount =
-              btn.parentElement.parentElement.children[2].children[0].value;
+            let pizzaId = btn.parentElement.parentElement.children[0].children[1].children[1].id
+            let pizzaAmount = btn.parentElement.parentElement.children[2].children[0].value
             if (pizzaAmount > 0) {
               orderedPizzas.push({
                 id: parseInt(pizzaId, 10),
-                amount: parseInt(pizzaAmount, 10),
-              });
+                amount: parseInt(pizzaAmount, 10)
+              })
               btn.innerHTML = `<img src="/public/img/white_x.png">`;
-              // selectorElement[i].children[0].style.display = "none";
               selectorElement[i].disabled = true;
             }
             if (orderedPizzas.length === 1) {
-              document.querySelector("#checkout").disabled = false;
+              document.querySelector('#checkout').disabled = false;
             }
           } else {
             orderedPizzas.map((pizza, j) => {
-              if (pizza.id === i + 1) {
+              if (pizza.id === i + 1){
                 orderedPizzas.splice(j, 1);
-                // selectorElement[i].children[0].style.display = "";
                 selectorElement[i].disabled = false;
                 selectorElement[i].value = "0";
-              }
-            });
+              } 
+            })
             if (orderedPizzas.length === 0) {
-              document.querySelector("#checkout").disabled = true;
-              document.querySelector("form").style.display = "none";
+              document.querySelector('#checkout').disabled = true;
+              document.querySelector('form').style.display = "none";
             }
             btn.innerHTML = `<img src="/public/img/white_plus.png">`;
           }
-        });
-      });
-    };
+          orderedPizzas.map(pizza => {
+            amount += pizza.amount;
+          })
+          document.querySelector("#pizzasNumber").innerHTML = amount;
+          amount = 0;
+        })
+      })
+    }
 
     const displayForm = () => {
       rootElement.insertAdjacentHTML("beforeend", orderForm());

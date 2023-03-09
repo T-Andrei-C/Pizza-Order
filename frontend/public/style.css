@@ -141,6 +141,7 @@ section {
 }
 
 form {
+    position: relative;
     color: white;
     display: none;
     flex-direction: column;
@@ -151,6 +152,29 @@ form {
     margin-bottom: 4em;
     padding: 3em;
     border-radius: 10px;
+}
+
+form img {
+    position: absolute;
+    top: 24px;
+    right: 30px;
+    width: 60px;
+}
+
+form h3 {
+    margin-top: 1em;
+}
+
+#pizzasNumber {
+    position: absolute;
+    top: 28px;
+    right: 54px;
+    background-color: white;
+    color: black;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 0.2em 0.6em;
+    border-radius: 50px;
 }
 
 #form-inputs {
@@ -201,3 +225,4 @@ form input {
     padding: 0.5em;
     border-radius: 5px;
 }
+
