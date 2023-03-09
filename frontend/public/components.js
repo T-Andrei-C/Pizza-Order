@@ -30,7 +30,7 @@ const pizzaDisplay = (data, data2) => {
                 <div>
                     <img src="${pizza.url}" class="pizza-image" alt="Image of ${pizza.name}">
                 </div>
-                <div>
+                <div id="pizza-details">
                     <p>&euro;${pizza.price}</p>
                     <p id="${pizza.id}"><b>${pizza.name}</b></p>
                 </div>
@@ -66,7 +66,7 @@ const pizzaPage = (data, data2) => {
     <section>
         <input type="text" id="pick-your-allergy" placeholder="Filter by Allergen">
         <ul id="allergens-list"></ul>
-        <button id="reset">Show All Pizzas</button>
+        <ul id="filtered-list"></ul>
         <div class="pizzas">
             ${pizzaDisplay(data, data2)}
         </div>

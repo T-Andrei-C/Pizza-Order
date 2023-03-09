@@ -1,6 +1,7 @@
-import { pizzaDisplay, pizzaPage, orderForm } from "./components.js";
+import { pizzaPage } from "./components.js";
 
 if (typeof window !== "undefined") {
+  const detailsOfPizzas = [];
   const loadEvent = () => {
     const rootElement = document.querySelector("#root");
 
@@ -14,34 +15,28 @@ if (typeof window !== "undefined") {
       return await response.json();
     };
 
-    // let a = [];
-    // const filter = ["gluten", "milk"];
-    // allergenList.map(pizza => {
-    //   if(!filter.some(alergy => pizza.allergens.includes(alergy))){
-    //     a.push(pizza);
-    //   }
-    // })
-    // console.log(a)
-
     const displayPizzaList = async () => {
       const pizzas = await fetchPizzas();
       const allergens = await fetchAllergens();
-      const allergenList = [];
       pizzas.map((pizza, i) => {
-        allergenList.push({
+        detailsOfPizzas.push({
+          id: pizza.id,
+          url: pizza.url,
           name: pizza.name,
+          ingredients: pizza.ingredients,
+          price: pizza.price,
           allergens: [],
         });
         pizza.allergens.map((allergen) => {
           if (allergen === allergens[allergen - 1].id) {
-            allergenList[i].allergens.push(allergens[allergen - 1].name);
+            detailsOfPizzas[i].allergens.push(allergens[allergen - 1].name);
           }
         });
       });
 
       rootElement.insertAdjacentHTML(
         "beforeend",
-        pizzaPage(pizzas, allergenList)
+        pizzaPage(pizzas, detailsOfPizzas)
       );
     };
 
@@ -63,16 +58,6 @@ if (typeof window !== "undefined") {
 
         listItem.addEventListener("click", () => {
           allergenSearch.value = listItem.innerHTML;
-
-          spanSelector.forEach((allergen) => {
-            const list = allergen.innerHTML.split(",");
-            list.map((allergy) => {
-              allergy = allergy.trim();
-              if (allergy === allergenSearch.value) {
-                allergen.parentElement.parentElement.parentElement.parentElement.remove();
-              }
-            });
-          });
           removeListElements();
         });
         allergensList.appendChild(listItem);
@@ -96,47 +81,77 @@ if (typeof window !== "undefined") {
       });
     };
 
-    const reset = () => {
-      document.querySelector("#reset").addEventListener("click", () => {
-        location.reload();
+    const orderedPizzas = [];
+    const addPizzas = () => {
+      const addButtons = Array.from(document.querySelectorAll('.add-pizza'));
+      addButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          let pizzaId = btn.parentElement.parentElement.children[0].children[1].children[1].id
+          let pizzaAmount = btn.parentElement.parentElement.children[2].children[0].value
+          if (pizzaAmount > 0) {
+            orderedPizzas.push({
+              id: parseInt(pizzaId, 10),
+              amount: parseInt(pizzaAmount, 10)
+            })
+            btn.innerHTML = `<img src="/public/img/white_x.png">`;
+          }
+          if (orderedPizzas.length === 1) {
+
+          }
+        })
+      })
+    }
+
+    const chooseOption = () => {
+      let allergyList = [];
+      const allergenSearch = document.querySelector("#pick-your-allergy");
+      const getOptions = document.querySelector("#allergens-list");
+      const allPizzas = document.querySelectorAll(".pizza");
+      const filterPizzas = document.querySelector("#filtered-list");
+
+      const filterPizzasByAlergies = () => {
+        detailsOfPizzas.map((pizza, i) => {
+          if (!allergyList.some(allergy => pizza.allergens.includes(allergy))) {
+            allPizzas[i].style.display = "";
+          } else {
+            allPizzas[i].style.display = "none";
+          }
+        });
+      };
+
+      getOptions.addEventListener("click", () => {
+        allergyList.push(allergenSearch.value.toLowerCase());
+        filterPizzasByAlergies();
+        filterPizzas.innerHTML = "";
+        allergyList = [...new Set(allergyList)];
+        allergyList.forEach((allergy, i) => {
+          if (!filterPizzas.textContent.includes(allergy)) {
+            filterPizzas.insertAdjacentHTML(
+              "beforeend",
+              `
+              <li>${allergy.charAt(0).toUpperCase().concat(allergy.slice(1).toLowerCase())}
+                <button id="${i}" class="removeAlergy">X</button>
+              </li>
+            `
+            );
+          }
+        });
+
+        document.querySelectorAll(".removeAlergy").forEach(btn => {
+          btn.addEventListener("click", e => {
+            allergyList.splice(e.target.id, 1);
+            btn.parentElement.remove();
+            filterPizzasByAlergies();
+          });
+        });
       });
     };
 
-    const orderedPizzas = [];
-    const addPizzas = () => {
-        const addButtons = Array.from(document.querySelectorAll('.add-pizza'));
-        addButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                let pizzaId = btn.parentElement.parentElement.children[0].children[1].children[1].id
-                let pizzaAmount = btn.parentElement.parentElement.children[2].children[0].value
-                orderedPizzas.push({
-                    id: parseInt(pizzaId, 10),
-                    amount: parseInt(pizzaAmount, 10)
-                })
-            })
-            if (orderedPizzas.length > 0) {
-                rootElement.insertAdjacentHTML('beforeend', orderForm());
-            }
-        })
-        // console.log(orderedPizzas.length);
-    }
-
-    console.log(orderedPizzas)
-
-    // rootElement.insertAdjacentHTML('beforeend', orderForm());
-
-    // const displayForm = () => {
-    //     if (orderedPizzas[1]) {
-    //         rootElement.insertAdjacentHTML('beforeend', orderForm());
-    //     }
-    // }
-
     const main = async () => {
       await displayPizzaList();
-      filterByAllergens();
+      await filterByAllergens();
       addPizzas()
-    //   displayForm()
-      reset();
+      chooseOption()
     };
     main();
   };
