@@ -11,6 +11,7 @@ section {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative;
 }
 
 #pick-your-allergy {
@@ -23,7 +24,7 @@ section {
     border-radius: 4px;
 }
 
-#pick-your-allergy::placeholder {
+#pick-your-allergy::placeholder, form input::placeholder {
     color: rgba(255, 255, 255,0.5);
     font-size: 16px;
 }
@@ -58,6 +59,9 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 0 0 1em;
+    border-radius: 5px;
+    border-left: 2px solid rgba(255, 255, 255,0.2)
 }
 
 .add-and-remove-btn img {
@@ -82,19 +86,96 @@ section {
 }
 
 .quantity-options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2em;
     width: 30px;
 }
 
 .quantity {
     color: white;
-    font-size: 20px;
-    background-color: rgb(32,42,43);
+    font-size: 30px;
+    background-color: rgb(134, 29, 25);
     padding: 0.2em 0.5em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#allergens-list {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 80px;
+    width: 205px;
+}
+
+.list-item {
+    background-color: rgb(134, 29, 25);
+    padding: 0.5em;
+    width: 100%;
+    border-bottom: 2px solid rgba(32,42,43,0.6);
+    text-align: center;
+    cursor: pointer;
+}
+
+#allergens-list li:last-child {
+    border-bottom: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#order, #submit {
+    background-color: rgb(134, 29, 25);
+    font-size: 18px;
+    padding: 0.5em;
+    width: 205px;
+    border-radius: 4px;
 }
 
 #order {
-    background-color: rgb(19, 24, 27);
-    font-size: 18px;
     margin-bottom: 3em;
+}
+
+form {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(19, 24, 27);
+    width: 500px;
+    margin-top: 10em;
+    padding: 3em;
+    border-radius: 10px;
+}
+
+#form-inputs {
+    display: flex;
+    flex-direction: column;
+    padding: 1.4em;
+    margin: 1em;
+    border: 2px solid rgba(255, 255, 255,0.2);
+    border-radius: 10px;
+}
+
+form input {
+    background-color: rgb(134, 29, 25);
+    color: white;
     padding: 0.5em;
+    margin: 0.5em;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#submit {
+    margin-top: 0.4em;
+}
+
+.quantity:hover, #order:hover, #submit:hover, .list-item:hover {
+    /* background-color: rgb(170, 47, 16); */
+    background-color: rgb(204, 107, 77);
+    background-color: rgb(39, 81, 92);
+    /* color: black; */
 }
