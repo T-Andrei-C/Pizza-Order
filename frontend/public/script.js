@@ -85,20 +85,38 @@ if (typeof window !== "undefined") {
     const orderedPizzas = [];
     const addPizzas = () => {
       const addButtons = Array.from(document.querySelectorAll('.add-pizza'));
-
-      addButtons.forEach(btn => {
+      const selectorElement = document.querySelectorAll(".quantity");
+      addButtons.forEach((btn, i) => {
         btn.addEventListener('click', () => {
-          let pizzaId = btn.parentElement.parentElement.children[0].children[1].children[1].id
-          let pizzaAmount = btn.parentElement.parentElement.children[2].children[0].value
-          if (pizzaAmount > 0) {
-            orderedPizzas.push({
-              id: parseInt(pizzaId, 10),
-              amount: parseInt(pizzaAmount, 10)
+          if (btn.innerHTML === `<img src="/public/img/white_plus.png">`) {
+            let pizzaId = btn.parentElement.parentElement.children[0].children[1].children[1].id
+            let pizzaAmount = btn.parentElement.parentElement.children[2].children[0].value
+            if (pizzaAmount > 0) {
+              orderedPizzas.push({
+                id: parseInt(pizzaId, 10),
+                amount: parseInt(pizzaAmount, 10)
+              })
+              btn.innerHTML = `<img src="/public/img/white_x.png">`;
+              selectorElement[i].children[0].style.display = "none";
+              selectorElement[i].disabled = true;
+            }
+            if (orderedPizzas.length === 1) {
+              document.querySelector('#checkout').disabled = false;
+            }
+          } else {
+            orderedPizzas.map((pizza, j) => {
+              if (pizza.id === i + 1){
+                orderedPizzas.splice(j, 1);
+                selectorElement[i].children[0].style.display = "";
+                selectorElement[i].disabled = false;
+                selectorElement[i].value = "0";
+              } 
             })
-            btn.innerHTML = `<img src="/public/img/white_x.png">`;
-          }
-          if (orderedPizzas.length === 1) {
-            document.querySelector('#checkout').disabled = false;
+            if (orderedPizzas.length === 0) {
+              document.querySelector('#checkout').disabled = true;
+              document.querySelector('form').style.display = "none";
+            }
+            btn.innerHTML = `<img src="/public/img/white_plus.png">`;
           }
         })
       })
@@ -187,7 +205,7 @@ if (typeof window !== "undefined") {
             }
           }
         }
-        // location.reload();
+
         location.href = "http://127.0.0.1:9001/api/order"
         const reponse = await fetch("http://127.0.0.1:9001/api/order", {
           method: "POST",
