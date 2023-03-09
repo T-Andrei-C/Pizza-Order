@@ -1,11 +1,25 @@
 const orderForm = () => {
     return `
-    <form autocomplete="off">
-        <input type="text" id="name" name="name" placeholder="name"><br>
-        <input type="email" id="email" name="email" placeholder="yourname@gmail.com"><br>
-        <input type="text" id="city" name="city" placeholder="your city"><br>
-        <input type="text" id="street" name="street" placeholder="your street"><br>
-    </form>`
+    <section>
+        <form autocomplete="off">
+            <h3>Place Your Order</h3>
+            <div id="form-inputs">
+                <label>Name:
+                    <input type="text" id="name" name="name" placeholder="Sherlock Holmes">
+                </label>
+                <label>Email:
+                    <input type="email" id="email" name="email" placeholder="sherlocked@gmail.com">
+                </label>
+                <label>City:  
+                    <input type="text" id="city" name="city" placeholder="London">
+                </label>
+                <label>Street:
+                    <input type="text" id="street" name="street" placeholder="221B Baker Street">
+                </label>
+            </div>
+            <button type="submit" id="submit" name="submit">Submit</button><br>
+        </form>
+    </section>`
 }
 
 const capitalizeAllInArray = (data) => {
@@ -30,7 +44,7 @@ const pizzaDisplay = (data, data2) => {
                 <div>
                     <img src="${pizza.url}" class="pizza-image" alt="Image of ${pizza.name}">
                 </div>
-                <div id="pizza-details">
+                <div>
                     <p>&euro;${pizza.price}</p>
                     <p id="${pizza.id}"><b>${pizza.name}</b></p>
                 </div>

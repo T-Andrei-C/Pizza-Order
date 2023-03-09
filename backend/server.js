@@ -16,6 +16,9 @@ app.use(cors());
 app.get("/pizza/list", (req, res) => {
     res.sendFile(path.join(`${__dirname}/../frontend/index.html`));
 });
+app.get("/pizza/order", (req, res) => {
+    res.sendFile(path.join(`${__dirname}/../frontend/orders.html`));
+});
 app.use('/public', express.static(`${__dirname}/../frontend/public`));
 
 app.get("/api/pizza", async (req, res) => {
