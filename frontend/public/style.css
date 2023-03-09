@@ -128,7 +128,7 @@ section {
     border-bottom-right-radius: 5px;
 }
 
-#checkout, #submit {
+#checkout, #submit, #homepage {
     background-color: rgb(134, 29, 25);
     font-size: 18px;
     padding: 0.5em;
@@ -156,7 +156,7 @@ form {
 
 form img {
     position: absolute;
-    top: 24px;
+    top: 30px;
     right: 30px;
     width: 60px;
 }
@@ -167,13 +167,13 @@ form h3 {
 
 #pizzasNumber {
     position: absolute;
-    top: 28px;
-    right: 54px;
+    top: 32px;
+    right: 26px;
     background-color: white;
     color: black;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 600;
-    padding: 0.2em 0.6em;
+    padding: 0 0.4em;
     border-radius: 50px;
 }
 
@@ -199,8 +199,7 @@ form input {
     margin-top: 0.4em;
 }
 
-.quantity:hover, #checkout:hover, #submit:hover, .list-item:hover {
-    background-color: rgb(204, 107, 77);
+.quantity:hover, #checkout:hover, #submit:hover, .list-item:hover, #homepage:hover {
     background-color: rgb(39, 81, 92);
 }
 
@@ -212,7 +211,7 @@ form input {
 
 #filtered-list li {
     font-size: 16px;
-    padding: 0.2em;
+    padding: 0.3em;
     border-radius: 4px;
     background-color: rgb(134, 29, 25);
     width: 205px;
@@ -222,7 +221,25 @@ form input {
 
 #filtered-list button {
     background-color: rgb(19, 24, 27);
-    padding: 0.5em;
+    padding: 0.3em 0.5em;
     border-radius: 5px;
 }
 
+#smiley {
+    width: 100px;
+    margin-bottom: 2em;
+}
+
+#order-complete {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10em;
+    background-color: rgb(19, 24, 27);
+    padding: 3em;
+    border-radius: 10px;
+}
+
+#homepage {
+    margin-top: 2em;
+}
