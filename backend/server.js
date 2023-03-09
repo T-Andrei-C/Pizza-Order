@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
-const { reader } = require("./fileReader");
+const { reader, writer } = require("./fileReader");
 const filePathPizza = path.join(`${__dirname}/pizzas.json`);
 const filePathAllergens = path.join(`${__dirname}/allergens.json`);
 const filePathOrders = path.join(`${__dirname}/orders.json`);
@@ -29,9 +29,19 @@ app.get("/api/allergen", async (req, res) => {
     res.json(allergens.allergens);
 });
 
-app.get("/api/order", async(req, res) => {
+app.route("/api/order")
+.get(async(req, res) => {
     const orders = await reader(filePathOrders);
     res.json(orders);
+}) 
+.post(async(req, res) => {
+    const orders = await reader(filePathOrders);
+    req.body.id = orders.length + 1;
+    orders.push(req.body);
+    writer(filePathOrders, orders);
+    console.log(req.body)
 })
+
+
 
 app.listen(port, () => console.log(`http://127.0.0.1:${port}`));

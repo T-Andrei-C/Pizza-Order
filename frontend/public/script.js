@@ -167,8 +167,6 @@ if (typeof window !== "undefined") {
             
             const prePayload = new FormData(formElement);
             const payload = new URLSearchParams(prePayload);
-            // console.log(...payload);
-            console.log(...payload[0]);
 
             let order = {
                 id: 0,
@@ -179,13 +177,32 @@ if (typeof window !== "undefined") {
                     day: new Date().getDate(),
                     hour: new Date().getHours(),
                     minute: new Date().getMinutes(),
+                },
+                customer: {
+                  name: [...payload][0][1],
+                  email: [...payload][1][1],
+                  address: {
+                    city: [...payload][2][1],
+                    street: [...payload][3][1]
+                  }
                 }
             }
-            console.log(order);
+            location.reload();
+            const reponse = await fetch("http://127.0.0.1:9001/api/order", {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json"
+              },
+              body: JSON.stringify(order)
+            })
 
-            // location.reload();
+           
         });
     };
+
+    window.addEventListener("click", () => {
+      removeListElements();
+    })
 
     const main = async () => {
       await displayPizzaList();
