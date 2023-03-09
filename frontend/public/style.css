@@ -126,7 +126,7 @@ section {
     border-bottom-right-radius: 5px;
 }
 
-#order, #submit {
+#checkout, #submit {
     background-color: rgb(134, 29, 25);
     font-size: 18px;
     padding: 0.5em;
@@ -134,19 +134,20 @@ section {
     border-radius: 4px;
 }
 
-#order {
+#checkout {
     margin-bottom: 3em;
 }
 
 form {
     color: white;
-    display: flex;
+    /* display: flex; */
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: rgb(19, 24, 27);
     width: 500px;
-    margin-top: 10em;
+    margin-bottom: 4em;
     padding: 3em;
     border-radius: 10px;
 }
@@ -173,7 +174,7 @@ form input {
     margin-top: 0.4em;
 }
 
-.quantity:hover, #order:hover, #submit:hover, .list-item:hover {
+.quantity:hover, #checkout:hover, #submit:hover, .list-item:hover {
     /* background-color: rgb(170, 47, 16); */
     background-color: rgb(204, 107, 77);
     background-color: rgb(39, 81, 92);

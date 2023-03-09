@@ -84,7 +84,7 @@ const pizzaPage = (data, data2) => {
         <div class="pizzas">
             ${pizzaDisplay(data, data2)}
         </div>
-        <button id="order">Order Now</button>
+        <button id="checkout" disabled>Checkout</button>
     </section>`
 };
 

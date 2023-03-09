@@ -5,6 +5,7 @@ const path = require("path");
 const { reader } = require("./fileReader");
 const filePathPizza = path.join(`${__dirname}/pizzas.json`);
 const filePathAllergens = path.join(`${__dirname}/allergens.json`);
+const filePathOrders = path.join(`${__dirname}/orders.json`);
 
 const port = 9001;
 
@@ -15,9 +16,6 @@ app.use(cors());
 
 app.get("/pizza/list", (req, res) => {
     res.sendFile(path.join(`${__dirname}/../frontend/index.html`));
-});
-app.get("/pizza/order", (req, res) => {
-    res.sendFile(path.join(`${__dirname}/../frontend/orders.html`));
 });
 app.use('/public', express.static(`${__dirname}/../frontend/public`));
 
@@ -30,5 +28,10 @@ app.get("/api/allergen", async (req, res) => {
   const allergens = await reader(filePathAllergens)
     res.json(allergens.allergens);
 });
+
+app.get("/api/order", async(req, res) => {
+    const orders = await reader(filePathOrders);
+    res.json(orders);
+})
 
 app.listen(port, () => console.log(`http://127.0.0.1:${port}`));
