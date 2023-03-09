@@ -1,7 +1,8 @@
-import { pizzaPage } from "./components.js";
+import { pizzaPage, orderForm } from "./components.js";
 
 if (typeof window !== "undefined") {
   const detailsOfPizzas = [];
+
   const loadEvent = () => {
     const rootElement = document.querySelector("#root");
 
@@ -84,6 +85,7 @@ if (typeof window !== "undefined") {
     const orderedPizzas = [];
     const addPizzas = () => {
       const addButtons = Array.from(document.querySelectorAll('.add-pizza'));
+
       addButtons.forEach(btn => {
         btn.addEventListener('click', () => {
           let pizzaId = btn.parentElement.parentElement.children[0].children[1].children[1].id
@@ -96,11 +98,22 @@ if (typeof window !== "undefined") {
             btn.innerHTML = `<img src="/public/img/white_x.png">`;
           }
           if (orderedPizzas.length === 1) {
-
+            document.querySelector('#checkout').disabled = false;
           }
         })
       })
     }
+
+    const displayForm = () => {
+        rootElement.insertAdjacentHTML('beforeend', orderForm());
+    };
+
+    const checkoutOrder = () => {
+        document.querySelector('#checkout').addEventListener('click', () => {
+            const formElement = document.querySelector('form');
+            formElement.style.display = "flex";
+        });
+    };
 
     const chooseOption = () => {
       let allergyList = [];
@@ -147,11 +160,41 @@ if (typeof window !== "undefined") {
       });
     };
 
+    const getFormInfo = () => {
+        const formElement = document.querySelector('form');
+        formElement.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            
+            const prePayload = new FormData(formElement);
+            const payload = new URLSearchParams(prePayload);
+            // console.log(...payload);
+            console.log(...payload[0]);
+
+            let order = {
+                id: 0,
+                pizzas: orderedPizzas,
+                date: {
+                    year: new Date().getFullYear(),
+                    month: new Date().getMonth() +1,
+                    day: new Date().getDate(),
+                    hour: new Date().getHours(),
+                    minute: new Date().getMinutes(),
+                }
+            }
+            console.log(order);
+
+            // location.reload();
+        });
+    };
+
     const main = async () => {
       await displayPizzaList();
       await filterByAllergens();
       addPizzas()
       chooseOption()
+      displayForm()
+      checkoutOrder()
+      getFormInfo()
     };
     main();
   };
