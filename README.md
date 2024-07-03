@@ -6,12 +6,22 @@ Welcome to Pizza-Order, the web application for ordering pizzas with ease and co
 ## Technologies Used
 
 - **Express.js**
+- **Node.js**
 
 ## Setup
 
 ### Server side
 
 Open a terminal and run the following commands
+
+#### Install dependencies
+
+```bash
+cd backend
+npm install
+```
+
+#### Runnig the code
 
 ```bash
 cd backend
